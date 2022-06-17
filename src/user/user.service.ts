@@ -5,6 +5,7 @@ import {
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { PrismaService } from '../database/prisma.service';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UserService {
@@ -40,6 +41,39 @@ export class UserService {
     }
 
     return userExists;
+  }
+
+  async findOneByName(name: string) {
+    const userExists = await this.prisma.user.findFirst({
+      where: {
+        name,
+      },
+    });
+
+    if (!userExists) {
+      throw new NotFoundException('User not found');
+    }
+
+    return userExists;
+  }
+
+  async update(id: string, data: UpdateUserDto) {
+    const userExists = await this.prisma.user.findFirst({
+      where: {
+        id,
+      },
+    });
+
+    if (!userExists) {
+      throw new NotFoundException('User not found');
+    }
+
+    const updatedUser = await this.prisma.user.update({
+      where: { id },
+      data,
+    });
+
+    return updatedUser;
   }
 
   async delete(id: string) {
