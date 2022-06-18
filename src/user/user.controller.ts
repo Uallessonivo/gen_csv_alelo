@@ -27,9 +27,9 @@ export class UserController {
     return this.userService.findOne(id);
   }
 
-  @Get('/:name')
+  @Get('name/:name')
   async findOneByName(@Param('name') name: string) {
-    return this.userService.findOneByName(name);
+    return this.userService.findByName(name);
   }
 
   @Delete('/:id')
