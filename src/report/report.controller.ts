@@ -7,7 +7,7 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ReportService } from './report.service';
 import { Readable } from 'stream';
-import { UsersInterface } from './interface/users.interface';
+import { UsersInterface } from '../user/interface/users.interface';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const readline = require('readline');
 
