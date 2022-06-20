@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/database/prisma.service';
 
 @Injectable()
-export class ReportService {
+export class CreateUsersFromFileService {
   constructor(private prisma: PrismaService) {}
 
   async createUser(

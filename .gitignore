@@ -40,3 +40,6 @@ lerna-debug.log*
 # DB files
 dev.db
 migrations
+
+# Files folder
+files

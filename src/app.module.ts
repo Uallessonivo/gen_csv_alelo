@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { UserModule } from './user/user.module';
-import { ReportModule } from './report/report.module';
+import { FileHandlerModule } from './file-handlers/file.handler.module';
 import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [
     UserModule,
-    ReportModule,
+    FileHandlerModule,
     MulterModule.register({
       dest: './uploads',
     }),

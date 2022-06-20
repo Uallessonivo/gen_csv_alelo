@@ -5,15 +5,17 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { ReportService } from './report.service';
 import { Readable } from 'stream';
-import { UsersInterface } from '../user/interface/users.interface';
+import { UsersInterface } from 'src/user/interface/users.interface';
+import { CreateUsersFromFileService } from './create-users-fromfile.service';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const readline = require('readline');
 
 @Controller('report')
-export class ReportController {
-  constructor(private readonly reportService: ReportService) {}
+export class CreateUsersFromFileController {
+  constructor(
+    private readonly createUsersFromFileService: CreateUsersFromFileService,
+  ) {}
 
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
@@ -42,7 +44,12 @@ export class ReportController {
     }
 
     for await (const { cpf, category, serial, name } of users) {
-      await this.reportService.createUser(cpf, category, serial, name);
+      await this.createUsersFromFileService.createUser(
+        cpf,
+        category,
+        serial,
+        name,
+      );
     }
   }
 }
