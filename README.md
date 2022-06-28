@@ -29,6 +29,7 @@ With this application I intend to open routes for registering employees in a dat
 - CRUD operations
 - Through a route you can indicate the value of the ticket and transport and also the working days of the month and the application will transfer this already processed data to the new file.
 - The application can receive a category through the route and export only users who belong to that category
+
 ## Installation
 
 ```bash

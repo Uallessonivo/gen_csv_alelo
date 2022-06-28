@@ -1,8 +1,8 @@
-import { IsEnum, IsNotEmpty, IsOptional, Length } from 'class-validator';
+import { IsEnum, IsOptional, Length } from 'class-validator';
 import { UserCategory } from '../enum/user.enum';
 
 export class UpdateUserDto {
-  @IsNotEmpty()
+  @IsOptional()
   name: string;
 
   @Length(11, 11)
