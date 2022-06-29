@@ -1,7 +1,9 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { GetUserByCategoryService } from './get-user-by-category.service';
 
 @Controller('users')
+@UseGuards(AuthGuard('jwt'))
 export class GetUserByCategoryController {
   constructor(private readonly userService: GetUserByCategoryService) {}
 

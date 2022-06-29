@@ -7,12 +7,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-    id          String @id @default(uuid())
-    name        String
-    serial      String @unique
-    cpf         String @unique
-    category    String
+model SuperUsers {
+  id       String @id @default(uuid())
+  name     String
+  email    String @unique
+  password String
 
-    @@map("users")
+  @@map("superusers")
+}
+
+model User {
+  id       String @id @default(uuid())
+  name     String
+  serial   String @unique
+  cpf      String @unique
+  category String
+
+  @@map("users")
 }

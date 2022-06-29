@@ -2,16 +2,19 @@ import {
   Controller,
   Post,
   UploadedFile,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Readable } from 'stream';
 import { UsersInterface } from 'src/user/interface/users.interface';
 import { CreateUsersFromFileService } from './create-users-fromfile.service';
+import { AuthGuard } from '@nestjs/passport';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const readline = require('readline');
 
 @Controller('report')
+@UseGuards(AuthGuard('jwt'))
 export class CreateUsersFromFileController {
   constructor(
     private readonly createUsersFromFileService: CreateUsersFromFileService,

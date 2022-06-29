@@ -1,8 +1,10 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { GenFileByCategoryDTO } from './dto/gen-file-by-category.dto';
 import { GenFileByCategoryService } from './gen-file-by-category.service';
 
 @Controller('report')
+@UseGuards(AuthGuard('jwt'))
 export class GenFileByCategoryController {
   constructor(
     private readonly genFileByCategoryService: GenFileByCategoryService,
